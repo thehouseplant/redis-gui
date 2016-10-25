@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="RedisGUI">
+    <head>
+        <meta charset="utf-8">
+        <title>Redis GUI</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="./style.css"/>
+
+        <!-- JavaScript -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+
+        <!-- Application Code -->
+        <script src="./app.js"></script>
+    </head>
+
+    <body ng-controller="MainCtrl">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Redis GUI</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="margin-top:70px;">
+            <form class="form-inline">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="newKey.keyId" placeholder="Key ID" />
+                    <input type="text" class="form-control" ng-model="newKey.keyValue" placeholder="Key Value" />
+                    <button class="btn btn-primary" ng-click="createKey(newKey)">Create Key</button>
+                </div>
+            </form>
+
+            <hr/>
+
+            <div ng-repeat="key in keys">
+                {{key}}
+            </div>
+        </div>
+    </body>
+</html>

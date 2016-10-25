@@ -1,0 +1,19 @@
+{
+  "name": "redis-gui",
+  "version": "1.0.0",
+  "description": "IST302 test GUI for Redis",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "method-override": "^2.3.6",
+    "redis": "^2.6.2"
+  }
+}
