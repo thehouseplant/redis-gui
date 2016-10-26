@@ -35,6 +35,19 @@ function ServiceModule($http) {
         });
     };
 
+    // Get key
+    service.getKey = function(keyId) {
+        return $http({
+            url: '/api/keys/get/' + keyId,
+            method: 'GET',
+            dataType: "json",
+            async: "true",
+            headers: {
+                "Accept": "application/json"
+            }
+        });
+    };
+
     // Load all keys
     service.loadKeys = function() {
         return $http({
@@ -85,6 +98,15 @@ function MainCtrl($scope, $RedisServices) {
             });
         });
     };
+
+    // Get key
+    $scope.getKey = function(keyId) {
+        $scope.loading = true;
+        var getKey = $RedisServices.getKey(keyId);
+        getKey.then(function(response) {
+            console.log(response.data);
+        });
+    }
 
     // Load all keys
     $scope.loadKeys = function() {

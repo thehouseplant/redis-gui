@@ -29,12 +29,19 @@ app.get('/api/keys/list', function(req, res) {
         res.send(reply);
     });
 });
+app.get('/api/keys/get/:keyId', function(req, res) {
+    client.get(req.params.keyId, function(err, reply) {
+        res.send(reply);
+    });
+});
 app.post('/api/keys/create', function(req, res) {
-    client.set(req.body.keyId, req.body.keyValue, redis.print);
+    client.set(req.body.keyId, req.body.keyValue, function(err, reply) {
+        res.send('Key created');
+    });
 });
 app.get('/api/keys/delete/:keyId', function(req, res) {
     client.del(req.params.keyId, function(err, reply) {
-        res.send(reply);
+        res.send('Key ' + req.params.keyId + ' deleted');
     });
 });
 
