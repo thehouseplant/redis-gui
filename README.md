@@ -26,6 +26,8 @@ Run Redis Server
 - Visit the node.js install page: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 - Note: Download the latest LTS 64-bit installer
 
+## Application Setup
+
 #### Download Application Code
 
 - Download the code through the generated ZIP file: [https://github.com/thehouseplant/redis-gui/archive/master.zip](https://github.com/thehouseplant/redis-gui/archive/master.zip)
