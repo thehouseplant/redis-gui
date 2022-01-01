@@ -6,6 +6,7 @@ let app             = express();
 let cookieParser    = require('cookie-parser');
 let bodyParser      = require('body-parser');
 let methodOverride  = require('method-override');
+let cors            = require('cors');
 let redis           = require('redis');
 let port            = 3000;
 
