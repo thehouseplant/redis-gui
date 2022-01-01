@@ -1,6 +1,28 @@
-# Quick GUI for Redis
+# Redis GUI
+
+A lightweight user interface for interacting with Redis.
 
 ## Environment Setup
+
+### macOS
+
+#### Install and Run Redis
+
+Install Homebrew
+
+- Follow the instructions on the official [site](https://brew.sh)
+
+or
+
+- Run `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
+Install Redis
+
+- `brew install redis`
+
+Run Redis Server
+
+- `brew services start redis`
 
 ### Windows
 
