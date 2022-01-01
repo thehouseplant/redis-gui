@@ -24,7 +24,7 @@ app.use(methodOverride());
 
 // Redis configuration
 client.on('error', function(err) {
-    console.log('Error: ' + err);
+    console.log(`Error: ${err}`);
 });
 
 app.get('/api/keys/list', function(req, res) {
@@ -47,12 +47,12 @@ app.post('/api/keys/create', function(req, res) {
 
 app.get('/api/keys/delete/:keyId', function(req, res) {
     client.del(req.params.keyId, function(err, reply) {
-        res.send('Key ' + req.params.keyId + ' deleted');
+        res.send(`Key ${req.params.keyId} deleted`);
     });
 });
 
 
 // Application start
 app.listen(port, function() {
-    console.log('Listening on port ' + port + '...');
+    console.log(`Listening on port ${port}...`);
 });
