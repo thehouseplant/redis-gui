@@ -7,7 +7,6 @@ let cookieParser    = require('cookie-parser');
 let bodyParser      = require('body-parser');
 let methodOverride  = require('method-override');
 let redis           = require('redis');
-let client          = redis.createClient({host: 'localhost', port: 6379});
 let port            = 3000;
 
 
@@ -23,36 +22,42 @@ app.use(methodOverride());
 
 
 // Redis configuration
-client.on('error', function(err) {
-    console.log(`Error: ${err}`);
-});
+(async () => {
+  const client = redis.createClient();
 
-app.get('/api/keys/list', function(req, res) {
-    client.keys('*', function(err, reply) {
-        res.send(reply);
-    });
-});
+  client.on('error', (err) => {
+    console.log(`Redis client error: ${err}`);
+  });
 
-app.get('/api/keys/get/:keyId', function(req, res) {
-    client.get(req.params.keyId, function(err, reply) {
-        res.send(reply);
-    });
-});
+  await client.connect();
 
-app.post('/api/keys/create', function(req, res) {
-    client.set(req.body.keyId, req.body.keyValue, function(err, reply) {
-        res.send('Key created');
+  app.get('/api/keys/list', (req, res) => {
+    client.keys('*', (err, reply) => {
+      res.send(reply);
     });
-});
+  });
 
-app.get('/api/keys/delete/:keyId', function(req, res) {
-    client.del(req.params.keyId, function(err, reply) {
-        res.send(`Key ${req.params.keyId} deleted`);
+  app.get('/api/keys/:keyId', (req, res) => {
+    client.get(req.params.keyId, (err, reply) => {
+      res.send(reply);
     });
-});
+  });
+
+  app.get('api/keys/create', (req, res) => {
+    client.set(req.body.keyId, (err, reply) => {
+      res.send(`Key ${req.body.keyId} created`);
+    });
+  });
+
+  app.get('/api/keys/delete/:keyId', (req, res) => {
+    client.del(req.params.keyId, (err, reply) => {
+      res.send(`Key ${req.params.keyId} deleted`);
+    });
+  });
+})();
 
 
 // Application start
-app.listen(port, function() {
-    console.log(`Listening on port ${port}...`);
+app.listen(port, () => {
+  console.log(`Listening on port ${port}...`);
 });
