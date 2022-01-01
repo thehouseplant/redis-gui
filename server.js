@@ -43,7 +43,7 @@ app.use(methodOverride());
     });
   });
 
-  app.get('api/keys/create', (req, res) => {
+  app.post('api/keys', (req, res) => {
     client.set(req.body.keyId, (err, reply) => {
       res.send(`Key ${req.body.keyId} created`);
     });

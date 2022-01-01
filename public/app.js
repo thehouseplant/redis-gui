@@ -8,7 +8,7 @@ function ServiceModule($http) {
     // Create new key
     service.createKey = function(keyData) {
         return $http({
-            url: '/api/keys/create',
+            url: '/api/keys',
             method: 'POST',
             dataType: "json",
             async: "true",
