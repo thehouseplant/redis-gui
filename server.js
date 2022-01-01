@@ -19,6 +19,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
 app.use(cookieParser());
 app.use(methodOverride());
+app.use(cors());
 
 
 // Redis configuration
